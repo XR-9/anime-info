@@ -4,7 +4,6 @@ import SearchPage from './pages/SearchPage'
 import DetailsPage from './pages/DetailsPage'
 import FavouritePage from './pages/FavouritesPage'
 import Navbar from './Components/layout/navbar'
-
 import './App.css'
 
 function App() {
