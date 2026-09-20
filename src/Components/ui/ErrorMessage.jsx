@@ -1,15 +1,15 @@
 import './ErrorMessage.css'
 function Errormessage({message , onretry}){
-    return(<section className="error-container">
+    return(<div className="error-container">
         <span className="error-icon">!</span>
 
-        <h2>{message}</h2>
+        <h2>{message || "Something went wrong. Please try again."}</h2>
 
         
 
         <button onClick={onretry}>Try again</button>
 
-    </section>
+    </div>
     )
 
 }

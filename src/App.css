@@ -1,58 +1,28 @@
 :root {
     /* ========== BASE COLORS ========== */
-    --bg: #FAF5FF;                    /* Very Light Purple - Main background */
-    --card: #EDE9FE;                  /* Soft Lavender - Card background */
-    --text-primary: #2E1065;          /* Deep Purple - Main text */
-    --text-white: #FFFFFF;            /* Pure white */
-    --text-muted: #6B7280;            /* Gray - Subtle text, placeholders */
+    --bg: #FAF5FF;                    /* Very Light Purple */
+    --card: #EDE9FE;                  /* Soft Lavender */
+    --text-primary: #2E1065;          /* Deep Purple */
+    --text-white: #FFFFFF;            
+    --text-muted: #6B7280;           
 
-    /* ========== PRIMARY ACCENT ========== */
-    --muted: #06B6D4;                 /* Bright Cyan - Icons, highlights */
+    /* ========== PRIMARY ACCENTS ========== */
     --primary: #8B5CF6;               /* Violet - Main brand color */
-    --primary-hover: #7C3AED;         /* Darker Violet - Hover state */
+    --muted: #06B6D4;                 /* Bright Cyan - Icons, highlights */
 
-    /* ========== SEMANTIC COLORS ========== */
-
-    /* ERROR (Red) */
-    --error: #EF4444;                 /* Red 500 - Main error color */
-    --error-bg: rgba(239, 68, 68, 0.1); /* Light red bg for error container */
+    /* ========== ERROR COLORS ========== */
+    --error: #EF4444;                 /* Red */
+    --error-bg: rgba(239, 68, 68, 0.1);
     --error-border: rgba(239, 68, 68, 0.3);
-
-    /* LOADING (Amber/Yellow) */
-    --loading: #F59E0B;               /* Amber - Spinner color */
-    --loading-bg: rgba(245, 158, 11, 0.1);
-
-    /* SUCCESS / RESULT (Emerald Green) */
-    --success: #10B981;               /* Emerald - Success states */
-    --success-bg: rgba(16, 185, 129, 0.1);
-    --result-accent: #8B5CF6;         /* Violet - Result cards */
-
-    /* FAVOURITE / HEART (Pink) */
-    --favourite: #EC4899;             /* Pink - Heart icon when active */
-    --favourite-bg: rgba(236, 72, 153, 0.1);
-    --favourite-hover: #DB2777;
-
-    /* INFO / NEUTRAL (Blue) */
-    --info: #3B82F6;                  /* Blue - Info messages */
-    --info-bg: rgba(59, 130, 246, 0.1);
-
-    /* WARNING (Orange) */
-    --warning: #F97316;               /* Orange - Warning messages */
-    --warning-bg: rgba(249, 115, 22, 0.1);
 
     /* ========== GLASSMORPHISM ========== */
     --glass-bg: rgba(250, 245, 255, 0.45);
     --glass-border: rgba(255, 255, 255, 0.8);
-    --glass-shadow: rgba(46, 16, 101, 0.1); /* Purple-tinted shadow */
-
-    /* ========== BORDERS & DIVIDERS ========== */
-    --border-light: rgba(255, 255, 255, 0.6);
-    --border-subtle: rgba(46, 16, 101, 0.08);
+    --glass-shadow: rgba(46, 16, 101, 0.1);
 
     /* ========== GRADIENTS ========== */
     --gradient-primary: linear-gradient(135deg, #8B5CF6, #06B6D4);
     --gradient-error: linear-gradient(135deg, #EF4444, #EC4899);
-    --gradient-favourite: linear-gradient(135deg, #EC4899, #F472B6);
 }
 
 /* ========== BODY BACKGROUND ========== */
