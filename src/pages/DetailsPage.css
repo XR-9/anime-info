@@ -1,0 +1,229 @@
+.details-page{
+    padding: 30px 0;
+    width: 100%;
+}
+
+.detail-cont{
+    margin: 20px 40px;
+    display: flex;
+    margin-top: 10px;
+    justify-content: space-around;
+   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+   gap: 20px;
+}
+
+/* ---------- LEFT SIDE ---------- */
+.left-cont{
+    margin-left: 10px;
+}
+
+.left-cont img{
+    width: 250px;
+    height: 360px;
+    border-radius: 20px;
+    object-fit: cover;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+}
+
+.sub-left-cont{
+    display: flex;
+    flex-direction: column;
+    margin-top: 14px;
+    gap: 12px;
+}
+
+.sub-left-cont button{
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 10px;
+    border: none;
+    color: #fff;
+    padding: 12px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: opacity 0.2s ease, transform 0.15s ease;
+    width: 250px;
+}
+
+.sub-left-cont button:hover{
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.fav-btn{
+    background-color: #6c5ce7;
+}
+
+.trailer-btn{
+    background-color: #e63946;
+}
+
+.icon{
+    width: 20px;
+    height: 20px;
+}
+
+/* ---------- RIGHT SIDE ---------- */
+.right-cont{
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding-top: 4px;
+}
+
+.anime-name{
+    font-size: 2.6rem;
+    font-weight: 800;
+    color: black;
+    line-height: 1.1;
+}
+
+.anime-jap{
+    font-size: 1.2rem;
+    color:var(--text-primary);
+    margin-top: -8px;
+    font-weight: bold;
+}
+
+/* ---------- STAT BADGES ---------- */
+.stats-cont{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+}
+
+.rating-badge{
+    background: linear-gradient(135deg, #fcc543 ,  #ffe08a);
+    color: #4a3200;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    border: 2px solid  #ffca4b
+}
+
+.stat-pill{
+    background: rgba(139, 92, 246, 0.05);
+    border: 2px solid var(--text-primary);
+    color: #333;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+}
+.stat-pill span{
+    font-weight: bold;
+}
+
+/* ---------- GENRE TAGS ---------- */
+.genres-cont{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.genre-tag{
+    padding: 7px 16px;
+    border-radius: 20px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+.genre-0{ background-color: #e63946; }
+.genre-1{ background-color: #2196f3; }
+.genre-2{ background-color: #2ecc71; }
+.genre-3{ background-color: #9b59b6; }
+.genre-4{ background-color: #ff9f43; }
+.genre-5{ background-color: #f4c542; color: #4a3200; }
+
+/* ---------- DESCRIPTION ---------- */
+.disc-cont{
+    background: #fff;
+    border-radius: 16px;
+    padding: 18px 22px;
+    font-size: 0.98rem;
+    line-height: 1.6;
+    color:black;
+    max-width: 890px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+    font-weight: 500;
+
+}
+
+/* ---------- METADATA + TRAILER ---------- */
+.bottom-row{
+    display: flex;
+    gap: 20px;
+    margin-top: 4px;
+    align-items: stretch;
+    width: 930px;
+    justify-content: space-between;
+    height: 200px;
+}
+
+.meta-cont{
+    background: #fff;
+    border-radius: 16px;
+    padding: 18px 22px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+    width: 50%;
+
+}
+
+.meta-title{
+    color: #9a9fc0;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+.meta-line{
+    font-size: 0.95rem;
+    color: #333;
+    margin-bottom: 4px;
+    padding: 3px 0px;
+}
+
+.meta-line span{
+    color: #1a1a2e;
+    font-weight: 700;
+}
+
+.trailer-thumb{
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    display: block;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    flex-grow: 1;
+}
+
+.trailer-thumb img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.play-overlay{
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.2);
+}
+
+.play-icon{
+    width: 42px;
+    height: 42px;
+    color: #fff;
+    background: rgba(255,255,255,0.25);
+    border-radius: 50%;
+    padding: 10px;
+}

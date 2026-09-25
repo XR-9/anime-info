@@ -1,73 +1,146 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import SearchBar from "../Components/media/SearchBar";
 import "./SearchPage.css";
 import Loader from "../Components/ui/Loader";
 // import EmptyState from "../Components/ui/EmptyState";
-import{ fetchData } from "../hooks/CallApi";
+import{ fetchPage } from "../hooks/CallApi";
 import Errormessage from "../Components/ui/ErrorMessage";
 import MediaGrid from "../Components/media/MediaGrid";
+import Pagination from "../Components/media/Pagination";
 
-function SearchPage() {
+function SearchPage({allData , setAllData}) {
+    const limit = 15
     const [query, setQuery] = useState("");
-    const [response , setResponse] = useState(null)
+    const [page , setPage] = useState({})
+
     const [loading , setLoading] = useState(false)
     const [error , setError] = useState("")
+    const [currentPage , setCurrentPage] = useState(1)
+    
 
-
-
+    let abortRef = useRef(null)
     useEffect(() => {
+        if(!query.trim()){
+            setPage({});
+            setError("")
+            setCurrentPage(1)
+            setLoading(false)
+            return;
+
+        }
+
+        if(abortRef.current) abortRef.current.abort()
+        let controller = new AbortController();
+        abortRef.current = controller;
 
         const timeId = setTimeout(async () => {
-            if (!query){
-                setResponse(null);
-                setError("")
-                return;
+            setPage({});
+            setError("")
+            setCurrentPage(1)
+            setLoading(true)
+
+            try{
+                 const page1 = await fetchPage(query , 1 , controller.signal)
+                 console.log(page1)
+                setPage({1 : page1})
+                setLoading(false)
+                if(page1.data.length <= 0)setError("Anime not found. Try a different search term.");
+
+                if(page1.totalCount > limit){
+                    fetchPage(query , 2 , controller.signal).then((page2) => {
+                        if(!controller.signal.aborted){
+                            setPage(prev => ({...prev ,2 : page2}))
+                            console.log(`page 2 prefetched`)
+                        }
+                    }).catch(() => {})
+                }
+
+            }catch(err){
+                if(err.name === "AbortError") return;
+                console.log(err)
+                handleError(err)
             }
-            await result();
-            console.log("useEFfect working")
-        } , 1000)
-        return () => clearTimeout(timeId)
+        } ,500)
+
+        return () => {clearTimeout(timeId)
+            abortRef.current.abort()
+        }
 
     } , [query])
 
+    useEffect(() => {
+        if(!page[currentPage] ) return ;
 
-async function result(){
-        setLoading(true)
-        setError("")
+        const totalPage = Math.ceil((page[1]?.totalCount || 0)/ limit)
+        const nextPage = currentPage + 1
+
+
+        if(nextPage <= totalPage && !page[nextPage]){
+            try{
+            fetchPage(query , nextPage).
+            then(result => setPage(prev => ({...prev , [nextPage] : result})))
+            .catch((err) => {if(err.name !== "AbortError") return handleError(err)})
+
+        }
+        catch(err){
+            handleError(err)
+
+        }
+
+        }
+
+    } , [query , currentPage , page])
+
+    useEffect(() => {
+        setAllData(page[currentPage]?.data)
+    }, [page])
+
+    const handleError = (err) =>{
+        console.log("working")
+        setLoading(false)
+    const status = err.status;
+    if (status === 404) setError("Anime not found. Try a different search term.");
+    else if (status === 429) setError("Too many requests. Please wait a moment.");
+    else if (status >= 500) setError("Kitsu's server is having issues. Please try again later.");
+    else if (!status) setError("Network error. Please check your connection.");
+    else setError(`Something went wrong (Error: ${status})`);
+    };
+
+
+
+    const handlePageChange = async (nextpage) => {
+
+        console.log("click ->", nextpage, "cached?", !!page[nextpage], "keys:", Object.keys(page))
+        setCurrentPage(nextpage)
+
+        if(!page[nextpage]) {
+            setLoading(true);
 
             try{
-                console.log("data going to retreive")
-                const data = await fetchData(query);
-                console.log(data)
-                console.log("data retreived")
-                setResponse(data)
+            fetchPage(query , nextpage).
+            then(result => {setPage(prev => ({...prev , [nextpage] : result}))
+                            console.log(`page ${nextpage} prefetched`)} ).catch((err) => {if(err.name !== "AbortError") return handleError(err)})
 
-            }
-            catch(error){
-                    const status = error.status;
 
-                    // Agar status hai, toh HTTP error tha (404, 429, etc.)
-                    if (status === 404) {
-                        setError("Anime not found. Try a different search term.");
-                    } else if (status === 429) {
-                        setError("Too many requests. Please wait a moment.");
-                    } else if (status >= 500) {
-                        setError("Kitsu's server is having issues. Please try again later.");
-                    }
-                    // Agar status nahi hai, toh network error tha (TypeError)
-                    else if (!status) {
-                        setError("Network error. Please check your connection.");
-                    }
-                    else {
-                        setError(`Something went wrong (Error: ${status})`);
-                    }
-                }
-            finally{
-                setLoading(false)
-            
 
+        }
+        catch(error){
+            if(error !== "AbortError") handleError(error)
+
+        }
+        finally{
+            setLoading(false)
+        }
+
+        }
+        
     }
-}
+
+
+
+
+    const dataItems = page[currentPage]?.data
+    const totalPage = Math.ceil((page[1]?.totalCount || 0 )/ limit)
 
     return (
         <div className="search-page">
@@ -79,18 +152,15 @@ async function result(){
             <SearchBar query={query} setQuery={setQuery} />
             {loading && <Loader />}
             {error && <Errormessage message= {error} />}
-            {!error && response && <MediaGrid response = {response}></MediaGrid>}
-            {response && (<img 
-                    src={response[0].data[0].attributes.coverImage.original} 
-                    loading="lazy"
-                />)}
-            {response && (<img 
-                    src={response[0].data[0].attributes.posterImage.original} 
-                    loading="lazy"
-                />)}
-            
-
-
+           
+            {!error && dataItems?.length > 0 && (<>
+            <MediaGrid data = {dataItems} totalCount = {(page[1]?.totalCount || 0 )} totalPage = {totalPage} currentPage = {currentPage}/>
+            <Pagination 
+            currentPage={currentPage}
+            totalPage = {totalPage}
+            onPageChange={handlePageChange}
+           />
+            </>)}
 
 
         </div>

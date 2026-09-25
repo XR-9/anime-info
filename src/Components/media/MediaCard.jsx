@@ -1,35 +1,10 @@
 import "./MediaCard.css"
-
-// function MediaCard({anime}){
-
-//     return (<div>
-
-//         <img src={anime.images.jpg.image_url}></img>
-
-//         <div className="card-body">
-//             <h1>naruto</h1>
-//             <div className="meta">
-//                 <span>{anime.episodes || "?"}epis</span>
-//                 <span>•</span>
-//                 <span>{anime.year || "TBA"}</span>
-//                 <span>•</span>
-//                 <span>{anime.status}</span>
-//             </div>
-
-//             <div className="genres">
-//                 <span className="genre-pill"></span>
-//             </div>
-//         </div>
-
-//     </div>)
-
-// }
-
-// export default MediaCard
+import { useNavigate } from "react-router-dom";
 
 function MediaCard({ anime }) {
+    let navigate = useNavigate();
     return (
-        <div className="anime-card">
+        <div className="anime-card" onClick={() => navigate(`/details/${anime.id}`)}>
             {/* Poster + Score */}
             <div className="poster-wrapper">
                 <img 

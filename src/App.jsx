@@ -7,6 +7,8 @@ import Navbar from './Components/layout/navbar'
 import './App.css'
 
 function App() {
+  const [allData , setAllData] = useState([])
+  console.log(allData)
 
   return (
     <>
@@ -14,9 +16,9 @@ function App() {
 
     <main>
       <Routes>
-        <Route path='/' element = {<SearchPage/>}/>
-        <Route path='/details/:id' element = {<DetailsPage/>}/>
-        <Route path='/favourites' element = {<FavouritePage/>}/>
+        <Route path='/' element = {<SearchPage allData = {allData} setAllData = {setAllData}/>}/>
+        <Route path='/details/:id' element = {allData && <DetailsPage allData = {allData}/>}/>
+        <Route path='/favourites' element = {<FavouritePage />}/>
       </Routes>
     </main>
     </>
