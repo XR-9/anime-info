@@ -8,7 +8,7 @@ import Errormessage from "../Components/ui/ErrorMessage";
 import MediaGrid from "../Components/media/MediaGrid";
 import Pagination from "../Components/media/Pagination";
 
-function SearchPage({allData , setAllData}) {
+function SearchPage({allData , setAllData }) {
     const limit = 15
     const [query, setQuery] = useState("");
     const [page , setPage] = useState({})
@@ -72,7 +72,7 @@ function SearchPage({allData , setAllData}) {
         if(!page[currentPage] ) return ;
 
         const totalPage = Math.ceil((page[1]?.totalCount || 0)/ limit)
-        const nextPage = currentPage + 1
+        const nextPage = currentPage + 1;
 
 
         if(nextPage <= totalPage && !page[nextPage]){
@@ -154,7 +154,7 @@ function SearchPage({allData , setAllData}) {
             {error && <Errormessage message= {error} />}
            
             {!error && dataItems?.length > 0 && (<>
-            <MediaGrid data = {dataItems} totalCount = {(page[1]?.totalCount || 0 )} totalPage = {totalPage} currentPage = {currentPage}/>
+            <MediaGrid data = {dataItems} totalCount = {(page[1]?.totalCount || 0 )} totalPage = {totalPage} currentPage = {currentPage} />
             <Pagination 
             currentPage={currentPage}
             totalPage = {totalPage}

@@ -56,10 +56,17 @@
     gap: 10px;
 }
 .sub-rs{
-    border: 1px solid var(--glass-border);
-    background-color: var(--glass-bg);
+    border: 2px solid var(--glass-shadow);
+    background-color: var(--glass-border);
     padding: 7px 10px;
     border-radius: 10px;
     color: var(--text-primary);
-    font-size: 1.1rem;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    font-weight: bold;
+    box-shadow: 5px 5px 16px  var(--glass-shadow);
+}
+.sub-rs span{
+    color: var(--primary);
+    font-size: 1.3rem;
 }

@@ -31,7 +31,7 @@
 }
 
 .anime-card:hover .poster-wrapper img {
-    transform: scale(1.08);
+    transform: scale(1.035);
 }
 
 /* Badges */
@@ -49,7 +49,55 @@
 
 .score-badge { bottom: 10px; right: 10px; }
 .type-badge  { top: 10px; left: 10px; background: var(--gradient-primary); }
+.fav {
+    top: 10px;
+    right: 10px;
+    left: auto;            
+    width: 34px;         
+    height: 34px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(46, 16, 101, 0.75);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    z-index: 2;     
+    border: none;         
+}
 
+.fav:hover {
+    background: var(--favourite, #EC4899);  /* Pink on hover */
+    transform: scale(1.1);
+}
+
+.fav svg {
+    width: 18px;
+    height: 18px;
+    color: var(--text-white);
+}
+
+/* Jab favourite ho jaye (active state) */
+.fav.active {
+    background: var(--gradient-favourite);
+}
+.fav.active {
+    background: var(--gradient-favourite, linear-gradient(135deg, #EC4899, #F472B6));
+    border-color: transparent;
+    color: var(--text-white);              /* ← Icon ka color */
+}
+
+/* Active state me heart FILLED hoga */
+.fav.active svg {
+    fill: currentColor;      /* ← Parent color se fill hoga (white) */
+    stroke: currentColor;
+}
+
+/* Active state hover — Slightly darker */
+.fav.active:hover {
+    transform: scale(1.08);
+    box-shadow: 0 4px 16px rgba(236, 72, 153, 0.5);
+}
 /* Body */
 .card-body {
     padding: 15px;
