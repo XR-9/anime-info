@@ -90,9 +90,15 @@
 }
 
 .trailer-btn{
-    background-color: #e63946;
+    background-color: #ee2939;
+    transition: all 0.5s ease , tranform 0.8s ease;
 }
 
+.trailer-btn:hover{
+    background-color: #f92133;
+    transform: translateY(-2px);
+    box-shadow: 4px 4px 15px rgba(241, 40, 40, 0.705);
+}
 .icon{
     width: 20px;
     height: 20px;
@@ -272,7 +278,7 @@
     color: var(--text-white);
 
  
-    background: rgba(46, 16, 101, 0.75);
+    background: rgba(46, 16, 101, 0.751);
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 12px;
     backdrop-filter: blur(12px);
@@ -288,14 +294,14 @@
     height: 20px;
     stroke: currentColor;
     fill: none;
-    transition: all 0.3s ease;
+    transition: all 0.5s ease;
 }
 
 
 .fav-btn:hover {
-    background: rgba(236, 72, 153, 0.85);
+    background:rgba(46, 16, 101, 0.967);
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(236, 72, 153, 0.35);
+    box-shadow: 0 8px 24px rgba(58, 44, 183, 0.35);
     border-color: rgba(255, 255, 255, 0.25);
 }
 

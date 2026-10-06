@@ -2,7 +2,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import "./DetailsPage.css"
 import { IconChevronLeft, IconHeart } from '@tabler/icons-react';
 import { IconPlayerPlay } from '@tabler/icons-react';
-import { usefav } from "../Components/context/favContext";
+import { usefav } from "../context/favContext";
 function DetailsPage({ allData }) {
     let { id } = useParams();
     let navigate = useNavigate();
@@ -25,7 +25,14 @@ function DetailsPage({ allData }) {
         return new Date(date).toLocaleDateString("en-US", { month: "short", year: "numeric" });
     };
     const handleNavigation =() => {
-        navigate(1)
+        navigate(-1)
+    }
+    function formatFav(favCount){
+        if(favCount > 1000){
+            return `${Math.floor(favCount / 1000)}k`
+        }
+        else return favCount
+
     }
 
     return (
@@ -42,7 +49,7 @@ function DetailsPage({ allData }) {
                             <IconHeart stroke={2} className="icon" />
                             {isFav
                                 ? "Added to Favourites"
-                                : `Add to Favourites${attrs?.favoritesCount ? ` (${attrs.favoritesCount})` : ""
+                                : `Add to Favourites${attrs?.favoritesCount ? ` (${formatFav(attrs.favoritesCount)})`: ""
                                 }`
                             }
                         </button>

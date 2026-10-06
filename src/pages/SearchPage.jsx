@@ -1,21 +1,16 @@
 import { useEffect, useRef, useState } from "react";
 import SearchBar from "../Components/media/SearchBar";
 import "./SearchPage.css";
-import Loader from "../Components/ui/Loader";
-// import EmptyState from "../Components/ui/EmptyState";
 import{ fetchPage } from "../hooks/CallApi";
 import Errormessage from "../Components/ui/ErrorMessage";
 import MediaGrid from "../Components/media/MediaGrid";
 import Pagination from "../Components/media/Pagination";
+import { useSearch } from "../context/searchContext";
+import MediaCardSkeleton from "../Components/ui/MediaCardSkeleton";
 
-function SearchPage({allData , setAllData }) {
+function SearchPage({ setAllData }) {
     const limit = 15
-    const [query, setQuery] = useState("");
-    const [page , setPage] = useState({})
-
-    const [loading , setLoading] = useState(false)
-    const [error , setError] = useState("")
-    const [currentPage , setCurrentPage] = useState(1)
+    const {page, setCurrentPage , query , currentPage , error , setError , loading , setLoading , setPage , } = useSearch()
     
 
     let abortRef = useRef(null)
@@ -149,8 +144,9 @@ function SearchPage({allData , setAllData }) {
                 Thousands of anime, one search away
             </p>
 
-            <SearchBar query={query} setQuery={setQuery} />
-            {loading && <Loader />}
+            <SearchBar />
+
+            {loading && <MediaCardSkeleton count={10} />}
             {error && <Errormessage message= {error} />}
            
             {!error && dataItems?.length > 0 && (<>

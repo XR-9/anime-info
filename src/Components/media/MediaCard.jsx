@@ -2,9 +2,9 @@ import "./MediaCard.css"
 import { useNavigate } from "react-router-dom";
 import { IconHeart } from '@tabler/icons-react';
 import { useContext } from "react";
-import { usefav } from "../context/favContext";
+import { usefav } from "../../context/favContext";
 
-function MediaCard({ anime  , FavContext}) {
+function MediaCard({ anime }) {
     let navigate = useNavigate();
     const {favId , toggleFav} = usefav();
     let isFav = favId.includes(anime.id)

@@ -38,3 +38,8 @@ body {
     min-height: 100vh;
     color: var(--text-primary);
 }
+.skeleton-main-cont{
+    display: grid;
+    grid-template-columns: repeat(3);
+    grid-template-rows: auto;
+}

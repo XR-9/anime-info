@@ -1,4 +1,7 @@
-function Pagination({ currentPage, totalPage, onPageChange }) {
+import { useSearch } from "../../context/searchContext";
+
+function Pagination({ onPageChange  , totalPage}) {
+  const { currentPage  }  = useSearch();
   if (totalPage <= 1) return null;
   console.log(currentPage)
 
