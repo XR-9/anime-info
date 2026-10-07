@@ -9,7 +9,7 @@ function MediaGrid({data , totalCount , totalPage , currentPage}){
             <div className="sub-rs"><span>{totalCount}</span> Results found</div>
             <div className="sub-rs"><span>{currentPage}</span> out of {totalPage} Page</div>
         </div>
-        <div className="results-container">{data.map(data =>  data && (<MediaCard anime ={data}  key={data.id}/>))}</div>
+        <div className="results-container">{data.map(data =>  data && (<MediaCard anime ={data.attributes}  id = {data.id} key={data.id}/>))}</div>
 
     </div>
 

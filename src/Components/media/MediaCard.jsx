@@ -4,27 +4,27 @@ import { IconHeart } from '@tabler/icons-react';
 import { useContext } from "react";
 import { usefav } from "../../context/favContext";
 
-function MediaCard({ anime }) {
+function MediaCard({ anime  , id}) {
     let navigate = useNavigate();
     const {favId , toggleFav} = usefav();
-    let isFav = favId.includes(anime.id)
+    let isFav = favId.some(r => r.Id ===id)
     const handleFavourite = (e) =>{
         e.stopPropagation()
-        toggleFav(anime.id)
+        toggleFav(id ,anime)
 
     }
 
     return (
-        <div className="anime-card" onClick={() => navigate(`/details/${anime.id}`)}>
+        <div className="anime-card" onClick={() => navigate(`/details/${id}`)}>
             {/* Poster + Score */}
             <div className="poster-wrapper">
                 <img 
-                    src={anime.attributes.posterImage.medium} 
-                    alt={anime.attributes.posterImage.small} 
+                    src={anime.posterImage.medium} 
+                    alt={anime.posterImage.small} 
                     loading="lazy"
                 />
-                {anime.attributes.averageRating && (
-                    <span className="score-badge">⭐ {anime.attributes.averageRating}</span>
+                {anime.averageRating && (
+                    <span className="score-badge">⭐ {anime.averageRating}</span>
                 )}
                <button 
                     className={`type-badge fav ${isFav ? 'active' : ''}`}
@@ -36,25 +36,25 @@ function MediaCard({ anime }) {
                         fill={isFav ? "currentColor" : "none"}
                     />
                 </button>
-                <span className="type-badge">{anime.attributes.showType}</span>
+                <span className="type-badge">{anime.showType}</span>
             </div>
 
             {/* Body */}
             <div className="card-body">
-                <h3>{anime.attributes.canonicalTitle}</h3>
+                <h3>{anime.canonicalTitle}</h3>
 
                 <div className="meta">
-                    <span>{anime.attributes.episodeCount || "?"} eps</span>
+                    <span>{anime.episodeCount || "?"} eps</span>
                     <span>•</span>
-                    <span>{anime.attributes.createdAt.slice(0 , 10) || "TBA"}</span>
+                    <span>{anime.createdAt.slice(0 , 10) || "TBA"}</span>
                     <span>•</span>
                     <span >
-                        {anime.attributes.status}
+                        {anime.status}
                     </span>
                 </div>
 
                 <div className="genres">
-                    {anime.attributes.genres.slice(0, 3).map((g , index) => (
+                    {anime.genres.slice(0, 3).map((g , index) => (
                         <span key={index} className="genre-pill">{g}</span>
                     ))}
                 </div>
