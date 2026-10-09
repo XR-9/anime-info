@@ -1,9 +1,50 @@
-import { useSearch } from "../../context/searchContext";
+import { useSearchParams } from "react-router-dom";
 import "./SearchBar.css";
-import { IconSearch } from '@tabler/icons-react';
+import { useEffect, useState } from "react";
 
 function SearchBar() {
-    const {query , setQuery} = useSearch();
+    const [searchParams  , setSearchParams] = useSearchParams();
+    const newquery = searchParams.get("q") || ""
+    const currentPage = searchParams.get("page") || "1"
+    const [input , setInput] = useState(newquery)
+
+    useEffect(() => {
+        setInput(newquery)
+    } , [newquery])
+
+    useEffect(() =>{
+        if(input === newquery) return;
+
+        const timerId = setTimeout(() =>{
+            const newParams = new URLSearchParams(searchParams);
+            if(input.trim()){
+                newParams.set("q" , input)
+                newParams.set("page" ,currentPage)
+            }
+            else{
+                newParams.delete("q")
+                newParams.delete("page")
+            }
+            setSearchParams(newParams , {replace :true})
+        } ,500
+
+        )
+        return(() =>{
+            clearTimeout(timerId)
+        
+    })
+    }
+     , [input])
+
+    const handleClear = () => {
+        setInput("")
+        const newParams = new URLSearchParams(searchParams)
+        newParams.delete("q")
+        newParams.delete("page")
+        setSearchParams(newParams , {replace : true})
+
+    }
+
     return (
         <div className="search-wrapper">
             <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-search search-icon">
@@ -15,13 +56,13 @@ function SearchBar() {
             <input
                 type="text"
                 className="searchInput"
-                value={query}
-                onChange={(event) => setQuery(event.target.value)}
+                value={input}
+                onChange={(event) => setInput(event.target.value)}
                 placeholder="Search Anime"
             />
 
-            {query && (
-                <button className="clear-btn" onClick={() => setQuery("")}>
+            {input && (
+                <button className="clear-btn" onClick={handleClear}>
                     ×
                 </button>
             )}

@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { usefav } from '../../context/favContext';
 function Information({attrs ,isFav , id}){
     const {favId , toggleFav} = usefav();
+    console.log(attrs)
 
     let navigate = useNavigate();
     const youtubeOpen = () => {
@@ -49,8 +50,8 @@ function Information({attrs ,isFav , id}){
                 </div>
 
                 <div className="right-cont">
-                    <div className="anime-name">{attrs?.canonicalTitle}</div>
-                    <div className="anime-jap">{attrs?.titles?.ja_jp}</div>
+                    <div className="anime-name">{attrs?.canonicalTitle ?? "??"}</div>
+                    <div className="anime-jap">{attrs?.titles?.ja_jp ?? "??"}</div>
 
                     <div className="stats-cont">
                         {attrs?.averageRating && (
@@ -69,17 +70,17 @@ function Information({attrs ,isFav , id}){
                     <div className="genres-cont">
                         {attrs?.genres.map((genre, i) => (
                             <span key={i} className={`genre-tag genre-${i % 6}`}>{genre}</span>
-                        ))}
+                        ) ?? "?")}
                     </div>
 
                     <div className="disc-cont">
-                        {attrs?.synopsis}
+                        {attrs?.synopsis ?? "Not Found"}
                     </div>
 
                     <div className="bottom-row">
                         <div className="meta-cont">
                             <div className="meta-title">Metadata</div>
-                            <div className="meta-line"><span>Type:</span> {attrs?.showType?.toUpperCase()}</div>
+                            <div className="meta-line"><span>Type:</span> {attrs?.showType?.toUpperCase() ?? "?"}</div>
                             <div className="meta-line"><span>Status:</span> {(attrs?.status ? attrs?.status : attrs?.tba)}</div>
                             <div className="meta-line">
                                 <span>Episodes:</span> {attrs?.episodeCount ?? "?"}

@@ -1,0 +1,110 @@
+
+
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 3rem 1rem;
+    text-align: center;
+    background: transparent;
+    animation: empty-fadein 0.5s ease;
+}
+
+@keyframes empty-fadein {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+
+.empty-icon {
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.empty-image {
+    width: 220px;
+    max-width: 85vw;
+    height: auto;
+    object-fit: contain;
+    user-select: none;
+    pointer-events: none;
+    filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.06));
+}
+
+.empty-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #111;
+    letter-spacing: -0.3px;
+}
+
+.empty-subtitle {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    max-width: 320px;
+    line-height: 1.5;
+}
+
+
+.empty-suggestions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 0.75rem;
+}
+
+.empty-suggestions-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+
+.empty-chip {
+    padding: 0.3rem 0.85rem;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: #111;
+    background: transparent;
+    border: 1.5px solid rgba(0, 0, 0, 0.25);
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+}
+
+.empty-chip:hover {
+    background: rgba(0, 0, 0, 0.06);
+    border-color: rgba(0, 0, 0, 0.5);
+}
+.bts-container {
+    margin: 20px 40px;
+    margin-left: 50px;
+}
+
+.bts-container button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 10px 16px;
+    border: 2px solid var(--glass-border);
+    border-radius: 10px;
+    color: var(--text-white);
+    background-color: var(--primary);
+    font-weight: bold;
+    font-family: inherit;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.5s ease;
+  
+}
+
+.bts-container button:hover {
+    background-color: var(--text-primary);
+}
+

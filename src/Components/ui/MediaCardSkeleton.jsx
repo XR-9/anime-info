@@ -5,7 +5,6 @@ function MediaCardSkeleton({ count }) {
         <div className="skeleton-main-cont">
             {Array(count).fill(0).map((_, i) => (
                 <div className="anime-card skeleton-card" key={i}>
-                    {/* Poster */}
                     <div className="poster-wrapper skeleton-poster">
                         <div className="sk sk-fill" />
 
@@ -19,8 +18,7 @@ function MediaCardSkeleton({ count }) {
                             <div className="sk" style={{ height: 22, width: 55 }} />
                         </div>
                     </div>
-
-                    {/* Body */}
+                    
                     <div className="card-body">
                         <div className="sk" style={{ height: 20, width: "85%" }} />
 

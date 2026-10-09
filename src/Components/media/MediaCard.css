@@ -16,7 +16,7 @@
     box-shadow: 0 16px 40px rgba(139, 92, 246, 0.25);
 }
 
-/* Poster */
+
 .poster-wrapper {
     position: relative;
     aspect-ratio: 2 / 3;
@@ -34,7 +34,6 @@
     transform: scale(1.035);
 }
 
-/* Badges */
 .score-badge,
 .type-badge {
     position: absolute;
@@ -67,7 +66,7 @@
 }
 
 .fav:hover {
-    background: var(--favourite, #EC4899);  /* Pink on hover */
+    background: var(--favourite, #EC4899);  
     transform: scale(1.1);
 }
 
@@ -77,28 +76,26 @@
     color: var(--text-white);
 }
 
-/* Jab favourite ho jaye (active state) */
 .fav.active {
     background: var(--gradient-favourite);
 }
 .fav.active {
     background: var(--gradient-favourite, linear-gradient(135deg, #EC4899, #F472B6));
     border-color: transparent;
-    color: var(--text-white);              /* ← Icon ka color */
+    color: var(--text-white);             
 }
 
-/* Active state me heart FILLED hoga */
 .fav.active svg {
-    fill: currentColor;      /* ← Parent color se fill hoga (white) */
+    fill: currentColor;    
     stroke: currentColor;
 }
 
-/* Active state hover — Slightly darker */
+
 .fav.active:hover {
     transform: scale(1.08);
     box-shadow: 0 4px 16px rgba(236, 72, 153, 0.5);
 }
-/* Body */
+
 .card-body {
     padding: 15px;
     display: flex;
@@ -118,7 +115,7 @@
     margin-bottom: 0;
 }
 
-/* Meta row */
+
 .meta {
     display: flex;
     gap: 6px;
@@ -132,7 +129,6 @@
     font-weight: 600;
 }
 
-/* Genres */
 .genres {
     display: flex;
     gap: 6px;

@@ -14,15 +14,13 @@ export function useSearch(){
 }
 
 export function SearchContextProvider({children}){
-    const [query, setQuery] = useState("");
     const [loading , setLoading] = useState(false)
     const [error , setError] = useState("")
     const [page , setPage] = useState({})
-    const [currentPage , setCurrentPage] = useState(1)
 
 
     return(<>
-    <searchContext.Provider value = {{query ,setQuery , loading , setLoading , error , setError , page , setPage , currentPage , setCurrentPage}}>
+    <searchContext.Provider value = {{ loading , setLoading , error , setError , page , setPage }}>
         {children}
     </searchContext.Provider>
     </>)

@@ -5,15 +5,19 @@ import Information from "../Components/media/Information";
 function DetailsPage({ allData }) {
     let { id } = useParams();
     let singleData = allData.filter(exp => exp.id === id);
+    console.log(id)
     let attrs = singleData[0]?.attributes;
     const {favId , toggleFav} = usefav();
+    console.log(favId)
+
 
     if(!attrs){
-         attrs =favId.filter(r => r.Id === id)?.Anime
+         let result =favId.filter(r => r.Id === id)
+         attrs = result[0].Anime
 
     }
-    const isFav = favId.some(r => r.Id ===id)
 
+    const isFav = favId.some(r => r.Id ===id)
 
     return (
         <>

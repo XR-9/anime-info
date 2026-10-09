@@ -1,4 +1,4 @@
-/* Grid */
+
 .skeleton-main-cont {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -6,7 +6,7 @@
     width: 100%;
 }
 
-/* Card */
+
 .skeleton-card {
     cursor: default;
     pointer-events: none;
@@ -24,7 +24,7 @@
     background: rgba(139, 92, 246, 0.06);
 }
 
-/* Badges */
+
 .skeleton-badge-tl {
     position: absolute;
     top: 10px;
@@ -41,7 +41,7 @@
     right: 10px;
 }
 
-/* Meta + Genres layout */
+
 .skeleton-card .meta {
     display: flex;
     gap: 8px;

@@ -2,7 +2,6 @@ import MediaCard from "./MediaCard"
 import './MediaGrid.css'
 function MediaGrid({data , totalCount , totalPage , currentPage}){
     console.log(data)
-    window.scrollTo(0,0)
     return (<>
     <div className="ms-cont">
         <div className="result-stat">

@@ -104,7 +104,6 @@
     height: 20px;
 }
 
-/* ---------- RIGHT SIDE ---------- */
 .right-cont{
     display: flex;
     flex-direction: column;
@@ -126,7 +125,7 @@
     font-weight: bold;
 }
 
-/* ---------- STAT BADGES ---------- */
+
 .stats-cont{
     display: flex;
     flex-wrap: wrap;
@@ -157,7 +156,6 @@
     font-weight: bold;
 }
 
-/* ---------- GENRE TAGS ---------- */
 .genres-cont{
     display: flex;
     flex-wrap: wrap;
@@ -179,7 +177,7 @@
 .genre-4{ background-color: #ff9f43; }
 .genre-5{ background-color: #f4c542; color: #4a3200; }
 
-/* ---------- DESCRIPTION ---------- */
+
 .disc-cont{
     background: #fff;
     border-radius: 16px;
@@ -193,7 +191,7 @@
 
 }
 
-/* ---------- METADATA + TRAILER ---------- */
+
 .bottom-row{
     display: flex;
     gap: 20px;
@@ -265,7 +263,7 @@
     border-radius: 50%;
     padding: 10px;
 }
-/* ===== Favourite Button (Details Page) ===== */
+
 .fav-btn {
     display: inline-flex;
     align-items: center;
