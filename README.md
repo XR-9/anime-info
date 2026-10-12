@@ -2,7 +2,7 @@
 
 A fast, responsive anime search app built with React. Search thousands of titles from the [Kitsu API](https://kitsu.docs.apiary.io/), browse paginated results, open detailed pages, and save your favourites.
 
-**Live demo:** <>
+**Live demo:** (https://anime-info-lac.vercel.app/)
 
 ## Features
 
@@ -115,3 +115,5 @@ No API key is needed. Kitsu's public API is used.
 ## Acknowledgements
 
 Anime data provided by [Kitsu](https://kitsu.io/).
+
+<p align="center">Made with ☕ and too many late nights by <strong>XR</strong></p>
