@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { usefav } from '../../context/favContext';
 function Information({attrs ,isFav , id}){
     const {favId , toggleFav} = usefav();
-    console.log(attrs)
 
     let navigate = useNavigate();
     const youtubeOpen = () => {
@@ -38,7 +37,7 @@ function Information({attrs ,isFav , id}){
                             <IconHeart stroke={2} className="icon" />
                             {isFav
                                 ? "Added to Favourites"
-                                : `Add to Favourites${attrs?.favoritesCount ? ` (${formatFav(attrs.favoritesCount)})`: ""
+                                : `Add to Favourites${attrs.favoritesCount ? ` (${formatFav(attrs.favoritesCount)})`: ""
                                 }`
                             }
                         </button>
@@ -98,6 +97,7 @@ function Information({attrs ,isFav , id}){
                                 href={`https://www.youtube.com/watch?v=${attrs?.youtubeVideoId}`}
                                 target="_blank"
                                 rel="noreferrer"
+                                title='Trailer'
                             >
                                 <img
                                     src={`https://img.youtube.com/vi/${attrs?.youtubeVideoId}/hqdefault.jpg`}

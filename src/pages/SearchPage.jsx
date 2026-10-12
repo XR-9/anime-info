@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import SearchBar from "../Components/media/SearchBar";
 import "./SearchPage.css";
-import{ fetchPage } from "../hooks/CallApi";
+import{ fetchPage } from "../services/CallApi";
 import MediaGrid from "../Components/media/MediaGrid";
 import Pagination from "../Components/media/Pagination";
 import { useSearch } from "../context/searchContext";
@@ -16,15 +16,13 @@ function SearchPage({ setAllData }) {
     const query = searchParams.get("q") || ""
     const {page,  error , setError , loading , setLoading , setPage , } = useSearch()
     const currentPage = parseInt(searchParams.get("page") || "1" , 10)
-    const [emptystate , Isempty] = useState(false)
-    console.log(currentPage)
     const navigate = useNavigate();
 
     let abortRef = useRef(null)
     useEffect(() => {
         if(!query.trim()){
             setPage({});
-            setError("")
+            setError(null)
             setLoading(false)
             return;
 
@@ -36,28 +34,25 @@ function SearchPage({ setAllData }) {
 
         const timeId = setTimeout(async () => {
             setPage({})
-            setError("")
+            setError(null)
             setLoading(true)
 
             try{
                  const page1 = await fetchPage(query , 1 , controller.signal)
-                 console.log(page1)
                 setPage({1 : page1})
                 setLoading(false)
-                if(page1.data.length <= 0) Isempty(prev => !prev)
+                if(page1.data.length <= 0) return;
 
                 if(page1.totalCount > limit){
                     fetchPage(query , 2 , controller.signal).then((page2) => {
                         if(!controller.signal.aborted){
                             setPage(prev => ({...prev ,2 : page2}))
-                            console.log(`page 2 prefetched`)
                         }
                     }).catch(() => {})
                 }
 
             }catch(err){
                 if(err.name === "AbortError") return;
-                console.log(err)
                 handleError(err)
             }
         } ,1)
@@ -97,7 +92,6 @@ useEffect(() => {
     }, [page , currentPage ])
 
  const handleError = (err) => {
-  console.log("working");
   setLoading(false);
 
   const status = err?.status;
@@ -178,7 +172,7 @@ useEffect(() => {
            {error && <NotFound
             code={error.status}
             title = {error.title}
-            description={error.Description}
+            description={error.description}
             onGoBack={() => {navigate(-1)
                 setError({})}
             }

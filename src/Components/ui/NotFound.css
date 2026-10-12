@@ -18,7 +18,7 @@
   50%  { transform: translateY(-8px); }
 }
 
-/* ─── Wrapper ─── */
+
 .nfp {
   --nfp-radius: 28px;
   --nfp-radius-sm: 14px;
@@ -39,7 +39,7 @@
   -webkit-font-smoothing: antialiased;
 }
 
-/* ─── Card ─── */
+
 .nfp__card {
   z-index: 1;
 
@@ -58,7 +58,7 @@
   animation: nfp-enter 0.5s ease both;
 }
 
-/* ─── Illustration ─── */
+
 .nfp__art {
   width: 100%;
   max-width: 140px;
@@ -93,7 +93,7 @@
   animation: nfp-enter 0.5s ease 0.15s both;
 }
 
-/* ─── Title ─── */
+
 .nfp__title {
   margin: 16px 0 0;
   font-size: clamp(1.375rem, 4.5vw, 1.75rem);
@@ -105,7 +105,6 @@
   animation: nfp-enter 0.5s ease 0.25s both;
 }
 
-/* ─── Description ─── */
 .nfp__desc {
   margin: 12px 0 0;
   max-width: 40ch;
@@ -116,7 +115,6 @@
   animation: nfp-enter 0.5s ease 0.35s both;
 }
 
-/* ─── Actions ─── */
 .nfp__actions {
   display: flex;
   flex-wrap: wrap;
@@ -128,7 +126,6 @@
   animation: nfp-enter 0.5s ease 0.45s both;
 }
 
-/* ─── Buttons ─── */
 .nfp__btn {
   flex: 1 1 auto;
   min-width: 140px;
@@ -194,7 +191,7 @@
     0 0 0 5px var(--primary);
 }
 
-/* ─── Responsive ─── */
+
 @media (max-width: 420px) {
   .nfp__card {
     padding: 32px 22px 30px;

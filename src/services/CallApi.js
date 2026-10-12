@@ -36,7 +36,6 @@ export async function fetchPage(query, page, signal) {
 
   const cached = cache.get(key);
   if (cached && Date.now() - cached.timeStamp < CACHE_TTL) {
-    console.log(`Cache hit: page ${page}`);
     return cached.data;
   }
 
@@ -97,4 +96,22 @@ export async function fetchPage(query, page, signal) {
 
 export function clearCache() {
   cache.clear();
+}
+
+
+export async function fetchAnimeById(id, signal) {
+  const resp = await fetchWithRetry(
+    `${KITSU_API}/anime/${id}?include=categories`,
+    { headers: { Accept: "application/vnd.api+json" }, signal }
+  );
+  if (!resp.ok) {
+    const error = new Error(`KITSU API ERROR : ${resp.status}`);
+    error.status = resp.status;
+    throw error;
+  }
+  const json = await resp.json();
+  const genres = (json.included || [])
+    .filter((i) => i.type === "categories")
+    .map((i) => i.attributes.title);
+  return { ...json.data.attributes, genres };
 }

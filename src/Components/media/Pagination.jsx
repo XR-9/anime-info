@@ -1,5 +1,3 @@
-import { useSearch } from "../../context/searchContext";
-
 function Pagination({ onPageChange  , totalPage , currentPage}) {
   if(totalPage <= 1) return null;
 

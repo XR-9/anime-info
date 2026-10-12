@@ -23,3 +23,9 @@
     margin-top: -1.2rem;
     text-align: center;
 }
+@media (max-width: 600px){
+    .navbar{ margin: 12px; }
+    .nav-links{ gap: 0.5em; }
+    .search-page{ padding: 2rem 1rem; }
+    .search-page h2{ font-size: 2rem; }
+}

@@ -24,7 +24,6 @@ export function FavContextProvider({children}){
         }
         setFavId((prev) => {
             const isFav = prev?.some(r =>r.Id === animeId)
-            console.log(isFav)
             let newFav = isFav ? prev.filter((p)=> p.Id !==animeId): [...prev , main]
 
             localStorage.setItem('favIds', JSON.stringify(newFav))

@@ -325,3 +325,13 @@
     transform: translateY(-2px);
     box-shadow: 0 8px 28px rgba(236, 72, 153, 0.55);
 }
+
+@media (max-width: 900px){
+    .detail-cont{ flex-direction: column; align-items: center; }
+    .left-cont{ margin-left: 0; }
+    .right-cont{ width: 100%; }
+    .bottom-row{ width: 100%; height: auto; flex-direction: column; }
+    .meta-cont{ width: auto; }
+    .trailer-thumb{ height: 200px; }
+    .anime-name{ font-size: 1.8rem; }
+}

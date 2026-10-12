@@ -19,7 +19,7 @@ function SearchBar() {
             const newParams = new URLSearchParams(searchParams);
             if(input.trim()){
                 newParams.set("q" , input)
-                newParams.set("page" ,currentPage)
+                newParams.set("page" , "1")
             }
             else{
                 newParams.delete("q")

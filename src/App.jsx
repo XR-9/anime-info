@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import { lazy, Suspense, useState } from 'react'
-import Navbar from './Components/layout/navbar'
+import Navbar from './Components/layout/Navbar'
 import './App.css'
 import { FavContextProvider } from './context/favContext'
 import { SearchContextProvider } from './context/searchContext'
@@ -9,12 +9,11 @@ import SearchPage from './pages/SearchPage'
 import ErrorState from "./assets/computer.png";
 
 import Loader from './Components/ui/Loader'
+const DetailsPage = lazy(()=>import('./pages/DetailsPage'))
+const FavouritePage = lazy(() => import('./pages/FavouritesPage'))
 
 function App() {
   const [allData, setAllData] = useState([])
-  const DetailsPage = lazy(()=>import('./pages/DetailsPage'))
-  const FavouritePage = lazy(() => import('./pages/FavouritesPage'))
-  console.log(allData)
 
   const ErrorFallback = ({error ,resetErrorBoundary}) => {
     return(<>
